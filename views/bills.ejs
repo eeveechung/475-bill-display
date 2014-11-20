@@ -8,7 +8,7 @@
     <link rel="icon" type="image/ico" href="images/logo.ico"/>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/bill.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,14 +54,29 @@
 
         <h2>Current Balances</h2> 
         <div id="all-bills">
-          <h3>My Current Payments</h3>
-          <div id="my-payments"></div>
-          <br>
-          <h3>My Past Payments</h3>
-          <div id="my-past-payments"></div>
-          <br>
-          <h3>Pay to Me</h3>
-          <div id="pay-to-me"></div>
+          <h3>Balance: <div id="my-balance"></div></h3>
+          <table>
+            <tr>
+              <td>
+                <div class="bill-box">
+                  <h3>My Current Payments</h3>
+                  <div id="my-payments"></div>
+                </div>
+              </td>
+              <td>
+                <div class="bill-box">
+                  <h3>My Past Payments</h3>
+                  <div id="my-past-payments"></div>
+                </div>
+              </td>
+              <td>
+                <div class="bill-box">
+                  <h3>Pay to Me</h3>
+                  <div id="pay-to-me"></div>
+                </div>
+              </td>
+            </tr>
+          </table>
           <br>
           <h3>Their Payments</h3>
           <div id="their-payments"></div>

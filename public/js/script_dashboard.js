@@ -41,8 +41,8 @@ function updateDashboardBills(){
 					data: {},
 					success: function(pays){
 						console.log(pays)
-						my_payments = pays["my_payments"]
-						pay_to_me = pays["pay_to_me"]
+						my_payments = pays.data["my_payments"]
+						pay_to_me = pays.data["pay_to_me"]
 						my_message = parseMyPayments(my_payments, bills)
 						ptm_message = parsePTMPayments(pay_to_me, bills)
 						if (my_message.length != "") {

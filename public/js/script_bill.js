@@ -18,17 +18,19 @@ function getBills() {
 					type: "get",
 					data: {},
 					success: function(pays){
+						my_balance = pays.balance
 						console.log(pays)
-						pay_to_me = pays["pay_to_me"]
-						my_payments = pays["my_payments"]
-						my_past_payments = pays["my_past"]
-						their_payments = pays["their_payments"]
+						pay_to_me = pays.data["pay_to_me"]
+						my_payments = pays.data["my_payments"]
+						my_past_payments = pays.data["my_past"]
+						their_payments = pays.data["their_payments"]
 						// console.log("Parsing My ") 
 						pay_me_message = parseMyPayments(pay_to_me, bills)
 						my_message = parseOwedPayments(my_payments, bills)
 						my_past_message = parsePastPayments(my_past_payments, bills)
 						their_message = parsePayments(their_payments, bills)
-						
+						$("#my-balance").html(my_balance);
+
 						if (pay_me_message.length != "") {
 							$("#pay-to-me").html(pay_me_message);
 							console.log("1");
@@ -64,6 +66,8 @@ function getBills() {
 	}); 
 	return false;
 }
+
+
 
 function parsePayments( pays, bills) {
 	var message = ''
