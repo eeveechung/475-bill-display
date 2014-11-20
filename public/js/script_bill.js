@@ -87,15 +87,17 @@ function parsePayments( pays, bills) {
 
 function parseMyPayments( pays, bills) {
 	console.log("hello");
-	var message = ''
+	var message = '<table><tr><td><b><center>Date</center</b></td>'+
+	'<td><b><center>Lent To</center></b></td><td><b><center>Amount</center></b></td>'+
+	'<td><b><center>Bill</center></b></td><td><b><center>Complete?</center></b></td>'
 	pays.forEach(function(p) {
 		bill_name = p.bill_name
 		console.log(p)
 		bills.forEach(function(bill) {
 			if (bill.bill_name == bill_name && p.obsolete=="1" && p.check==false){
 				date = new Date(bill.date).toDateString()
-				message += '<li>' + p.payer + ' owes you $' + p.partial_amount + ' for ' + bill.bill_name + ' bill '
-				+ '<a id="complete-b" href="/checkPay/' + p._id + '">Complete</a> ';
+				message += '<tr><td>'+p.date+'</td><td>'+ p.payer + '</td><td> $' + p.partial_amount + '</td><td>' + bill.bill_name + '</td>'
+				+ '<td><a id="complete-b" href="/completePay/' + p._id + '">Complete</a></td>';
 			}
 		})
 	})
@@ -129,17 +131,21 @@ function parsePastPayments( pays, bills) {
 }
 
 function parseOwedPayments( pays, bills) {
-	var message = ''
+	var message = '<table><tr><td><b><center>Date</center</b></td>'+
+	'<td><b><center>Lent From</center></b></td>'+
+	'<td><b><center>Amount</center></b></td>'+
+	'<td><b><center>Bill</center></b></td><td><b><center>Complete?</center></b></td>'
 	pays.forEach(function(p) {
 		bill_name = p.bill_name
 		console.log(p)
 		bills.forEach(function(bill) {
 			if (bill.bill_name == bill_name && p.obsolete!="0"&& p.complete==false) {
 				date = new Date(bill.date).toDateString()
-				message += '<li>You owe ' + p.user_name + ' $' + p.partial_amount + ' for ' + bill.bill_name + ' bill '
-				+ '<a id="complete-b" href="/completePay/' + p._id + '">Complete</a> ';
+				message += '<tr><td>'+p.date+'</td><td>'+ p.user_name + '</td><td> $' + p.partial_amount + '</td><td>' + bill.bill_name + '</td>'
+				+ '<td><a id="complete-b" href="/completePay/' + p._id + '">Complete</a></td>';
 			}
 		})
 	})
+	message += '</table>'
 	return message
 }
