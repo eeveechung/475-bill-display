@@ -9,6 +9,7 @@ exports.asgnExistingBill = function(req, res) {
 		user_name: req.body.user_name,
 		payer: req.body.payer,
 		partial_amount: req.body.partial_amount,
+		date: req.body.date,
 		obsolete: "1",
 		complete: false,
 		check: false
@@ -33,6 +34,7 @@ exports.getPays = function(req, res) {
         their_payments : [] //what other people owe me or each other
     };
 	my_name = this_user.name
+
 	Database.find("housemates","pays","", function(model) {
 		model.forEach(function(pay) {
 			console.log("pay_controler line 37, pay..", pay);
@@ -54,28 +56,10 @@ exports.getPays = function(req, res) {
 					data["their_payments"].push(pay);
 				}
 			}
-			// if(pay.complete==false && pay.obsolete=="1" && pay.check==false){
-			// 	if (pay.payer == my_name || pay.user_name == my_name){
-			// 		if(pay.payer == my_name){
-			// 			my_balance -= pay.partial_amount
-			// 			data["my_payments"].push(pay)
-			// 			console.log(my_balance)
-			// 		}
-			// 		else{
-			// 			my_balance += pay.partial_amount
-			// 			data["pay_to_me"].push(pay)
-			// 			console.log(my_balance)
-			// 		}
-			// 	} else{
-			// 	data["their_payments"].push(pay)
-			// 	}
-			// }
-			// else if (pay.complete == true && pay.obsoluete == "1" && pay.check == false && (pay.payer == my_name||pay.user_){
-			// 	//my past payments
-			// 	data["my_past"].push(pay)
-			// }
-
 		})
+		data["my_payments"].sort(compare_date);
+		data["pay_to_me"].sort(compare_date);
+		data["my_past"].sort(compare_date);
 		res.send({data:data, balance:my_balance})
 	})
 	console.log(my_balance)
@@ -127,4 +111,12 @@ exports.hidePay = function(req, res) {
 			res.redirect('bills');
 		}
 	});
+}
+
+function compare_date(a,b) {
+  if (a.date< b.date)
+     return -1;
+  if (a.date > b.date)
+    return 1;
+  return 0;
 }

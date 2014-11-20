@@ -18,7 +18,7 @@ function getBills() {
 					type: "get",
 					data: {},
 					success: function(pays){
-						my_balance = pays.balance
+						my_balance = "Balance: "+pays.balance
 						console.log(pays)
 						pay_to_me = pays.data["pay_to_me"]
 						my_payments = pays.data["my_payments"]
@@ -103,7 +103,10 @@ function parseMyPayments( pays, bills) {
 }
 
 function parsePastPayments( pays, bills) {
-	var message = ''
+	var message = '<table><tr><td><b><center>Date</center</b></td>'+
+	'<td><b><center>Paid From</center></b></td>'+
+	'<td><b><center>Pay To</center></b></td><td><b><center>Amount</center></b></td>'+
+	'<td><b><center>Bill</center></b></td><td><b><center>Hide?</center></b></td>'
 	pays.forEach(function(p) {
 		bill_name = p.bill_name
 		console.log(p)
@@ -111,16 +114,17 @@ function parsePastPayments( pays, bills) {
 			if (bill.bill_name == bill_name && p.obsolete!="0" && (p.check==true||p.complete==true)){
 				date = new Date(bill.date).toDateString()
 				if(p.complete==true){
-					message += '<li>You paid ' + p.user_name + ' $' + p.partial_amount + ' for ' + bill.bill_name
-					+ ' bill ' + '<a id="complete-b" href="/hidePay/' + p._id + '">Hide Bill</a>'+'</li>';
+					message += '<tr><td>'+p.date+'</td><td>You</td><td>' + p.user_name + '</td><td>$' + p.partial_amount + '</td><td>' + bill.bill_name
+					+ '</td>' + '<td><a id="complete-b" href="/hidePay/' + p._id + '">Hide</a>'+'</td></tr>';
 				}
 				if(p.check==true){
-					message += '<li>'+p.payer + ' paid you $' + p.partial_amount + ' for ' + bill.bill_name
-					+ ' bill ' + '<a id="complete-b" href="/hidePay/' + p._id + '">Hide Bill</a>'+'</li>';
+					message += '<tr><td>'+p.date+'</td><td>'+p.payer + '</td><td>You</td><td>$' + p.partial_amount + '</td><td>' + bill.bill_name
+					+ '</td><td>' + '<a id="complete-b" href="/hidePay/' + p._id + '">Hide</a></td></tr>';
 				}
 			}
 		})
 	})
+	message += '</table>'
 	return message
 }
 

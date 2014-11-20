@@ -46,7 +46,7 @@
       </div> <!-- sidebar -->
 
 
-      <div class="content-dash">
+      <div class="content-bill">
         <h1>Bill Management</h1>
         <form class="form" method="post" action="/bill_add_pg">
           <button type="submit" class="btn btn-primary"> Add Bill</button>
@@ -54,25 +54,27 @@
 
         <h2>Current Balances</h2> 
         <div id="all-bills">
-          <h3>Balance: <div id="my-balance"></div></h3>
+        <div id="my-balance"></div>
           <table>
             <tr>
               <td>
                 <div class="bill-box">
-                  <h3>My Current Payments</h3>
+                  <div id="bill-heading">My Current Payments</div>
                   <div id="my-payments"></div>
                 </div>
               </td>
               <td>
                 <div class="bill-box">
-                  <h3>My Past Payments</h3>
-                  <div id="my-past-payments"></div>
+                  <div id="bill-heading">Pay to Me</div>
+                  <div id="pay-to-me"></div>
                 </div>
               </td>
+            </tr>
+            <tr>
               <td>
                 <div class="bill-box">
-                  <h3>Pay to Me</h3>
-                  <div id="pay-to-me"></div>
+                  <div id="bill-heading">My Past Payments</div>
+                  <div id="my-past-payments"></div>
                 </div>
               </td>
             </tr>

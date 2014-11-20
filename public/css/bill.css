@@ -163,7 +163,7 @@ button, #complete-b, input[type='submit']{
 }
 
 /*------------------------------- bill display ------------------------------*/
-.content-dash{
+.content-bill{
 	display: block;
 	float: left;
 	margin: 40px;
@@ -173,13 +173,22 @@ button, #complete-b, input[type='submit']{
 }
 
 .bill-box{
-	width: 300px;
+	width: 540px;
 	height: 350px;
 	/*background: #efe9a5;*/
 	background: #f2daab;
 	margin: 10px;
 	margin-left: 0px;
 	padding: 15px;
+}
+
+#bill-heading{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+td{
+	padding: 7px;
 }
 
 /*------------------------------- SETTINGS ------------------------------*/
