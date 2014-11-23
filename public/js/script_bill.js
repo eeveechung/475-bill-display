@@ -116,11 +116,11 @@ function parsePastPayments( pays, bills) {
 			if (bill.bill_name == bill_name && p.obsolete!="0" && (p.check==true||p.complete==true)){
 				date = new Date(bill.date).toDateString()
 				if(p.complete==true){
-					message += '<tr><td>'+p.date+'</td><td>You</td><td>' + p.user_name + '</td><td>$' + p.partial_amount + '</td><td>' + bill.bill_name
+					message += '<tr><td>'+p.date+'</td><td>'+p.payer+'</td><td>You</td><td>$' + p.partial_amount + '</td><td>' + bill.bill_name
 					+ '</td>' + '<td><a id="complete-b" href="/hidePay/' + p._id + '">Hide</a>'+'</td></tr>';
 				}
 				if(p.check==true){
-					message += '<tr><td>'+p.date+'</td><td>'+p.payer + '</td><td>You</td><td>$' + p.partial_amount + '</td><td>' + bill.bill_name
+					message += '<tr><td>'+p.date+'</td><td>You</td><td>'+p.user_name+'</td><td>$' + p.partial_amount + '</td><td>' + bill.bill_name
 					+ '</td><td>' + '<a id="complete-b" href="/hidePay/' + p._id + '">Hide</a></td></tr>';
 				}
 			}
@@ -149,3 +149,17 @@ function parseOwedPayments( pays, bills) {
 	message += '</table>'
 	return message
 }
+
+jQuery(document).ready(function() {
+    jQuery('.tabs .tab-links a').on('click', function(e)  {
+        var currentAttrValue = jQuery(this).attr('href');
+ 
+        // Show/Hide Tabs
+        jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+ 
+        // Change/remove current tab to active
+        jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+ 
+        e.preventDefault();
+    });
+});

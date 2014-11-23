@@ -55,16 +55,45 @@
         <h2>Current Balances</h2> 
         <div id="all-bills">
         <div id="my-balance"></div>
-          <table>
+
+        <div class="tabs">
+            <ul class="tab-links">
+                <li class="active"><a href="#tab1">My Unpaid Payments</a></li>
+                <li><a href="#tab2">Unpaid Payments to Me</a></li>
+                <li><a href="#tab3">My Past Payments</a></li>
+                <li><a href="#tab4">Other Payments</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div id = "tab1" class="tab">
+                <div id="bill-heading">My Unpaid Payments</div>
+                <div id="my-payments"></div>
+              </div>
+              <div id = "tab2" class="tab">
+                <div id="bill-heading">Unpaid Payments to Me</div>
+                <div id="pay-to-me"></div>
+              </div>
+              <div id="tab3" class="tab">
+                <div id="bill-heading">My Past Payments</div>
+                <div id="my-past-payments"></div>
+              </div>
+              <div id="tab4" class="tab">
+                <div id="bill-heading">Other Payments</div>
+                <div id="their-payments"></div>
+              </div>
+            </div>
+        </div>
+
+<!--           <table>
             <tr>
               <td>
-                <div class="bill-box">
+                <div id = "tab1" class="tab">
                   <div id="bill-heading">My Current Payments</div>
                   <div id="my-payments"></div>
                 </div>
               </td>
               <td>
-                <div class="bill-box">
+                <div id = "tab2" class="tab">
                   <div id="bill-heading">Pay to Me</div>
                   <div id="pay-to-me"></div>
                 </div>
@@ -81,7 +110,7 @@
           </table>
           <br>
           <h3>Their Payments</h3>
-          <div id="their-payments"></div>
+          <div id="their-payments"></div> -->
         </div>
 
         <br><br>
