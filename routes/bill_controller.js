@@ -38,7 +38,7 @@ exports.addNew = function(req, res) {
 						partial_amount: Number(amount / split).toFixed(2),
 						date: req.body.date,
 						obsolete:"1",
-						complete: false,
+						completed: false,
 						check: false
 					}).save();
 				}

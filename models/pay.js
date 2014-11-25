@@ -7,7 +7,7 @@ var paySchema = new mongoose.Schema({
 	partial_amount		:Number,
 	date				:String,
 	obsolete			:String,
-	complete			:Boolean,
+	completed			:Boolean,
 	check				:Boolean
 });
 
