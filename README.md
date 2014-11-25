@@ -1,2 +1,14 @@
 475-bill-display
 ================
+models
+  pay.js
+public
+  css
+    bill.css
+  js
+    script_bill.js
+routes
+  bill_controller.js
+  pay_controller.js
+views
+  bill.ejs
